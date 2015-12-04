@@ -24,7 +24,6 @@ public class Controller extends HttpServlet {
         Model model = new Model(getServletConfig());
 
         Action.add(new ChangePwdAction(model));
-        Action.add(new AddAction(model));
         Action.add(new ListAction(model));
         Action.add(new LoginAction(model));
         Action.add(new LogoutAction(model));
