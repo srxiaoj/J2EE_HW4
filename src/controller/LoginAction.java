@@ -86,7 +86,7 @@ public class LoginAction extends Action {
 	        session.setAttribute("user",user);
 	        //set session for favorite list also to avoid nullpointerexception at manage.jsp
 	        FavoriteBean[] favoriteList = favoriteDAO.getUserFavorites(user.getUserId());
-//            request.setAttribute("favoriteList",favoriteList);
+            request.setAttribute("favoriteList",favoriteList);
 	        return "manage.do";
         } catch (RollbackException e) {
         	errors.add(e.getMessage());

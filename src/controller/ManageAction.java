@@ -85,8 +85,6 @@ public class ManageAction extends Action {
               System.out.println("favoriteId is: " + favoriteId);
               favoriteDAO.incrementClick(favoriteId);
               link = favoriteDAO.read(favoriteId).getUrl();
-//              return "favorite.jsp"; // if return jsp page, the page will not refresh
-//                                     // and the favoriteId is shown on URL
               return link;
           }
             

@@ -1,3 +1,8 @@
+/**
+ * HW4.
+ * @author Haorui WU
+ * @andrewId haoruiw
+ */
 package formbeans;
 
 import java.util.ArrayList;
@@ -22,12 +27,8 @@ public class RegisterForm extends FormBean {
 	public void setLastName(String s)  { lastName  = trimAndConvert(s,"<>\"");  }
 	public void setEmail(String s)  { email  = trimAndConvert(s,"<>\"");  }
 	public void setPassword(String s)  { password  = s.trim();                  }
-	public void setConfirm(String s)   { confirm   = s.trim();                  }/**
-	 * HW4.
-	 * @author Haorui WU
-	 * @andrewId haoruiw
-	 */
-
+	public void setConfirm(String s)   { confirm   = s.trim();                  }
+	 
 
 	public List<String> getValidationErrors() {
 		List<String> errors = new ArrayList<String>();
@@ -41,7 +42,7 @@ public class RegisterForm extends FormBean {
 		}
 
 		if (email == null || email.length() == 0) {
-			errors.add("User Name is required");
+			errors.add("Email is required");
 		}
 
 		if (password == null || password.length() == 0) {

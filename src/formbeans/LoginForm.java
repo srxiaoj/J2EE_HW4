@@ -1,3 +1,9 @@
+/**
+ * HW4.
+ * @author Haorui WU
+ * @andrewId haoruiw
+ */
+
 package formbeans;
 
 import java.util.ArrayList;
@@ -26,11 +32,7 @@ public class LoginForm extends FormBean {
 			errors.add("Password is required");
 		}
 		
-		return errors;/**
-		 * HW4.
-		 * @author Haorui WU
-		 * @andrewId haoruiw
-		 */
+		return errors;
 
 	}
 }

@@ -58,7 +58,11 @@ public class Controller extends HttpServlet {
         String action = getActionName(servletPath);
 
         // System.out.println("servletPath="+servletPath+" requestURI="+request.getRequestURI()+"  user="+user);
-
+        // allow user to look at other's favorite list without login
+        if (action.equals("list.do")) {
+            return Action.perform(action, request);
+        }
+        
         if (action.equals("register.do") || action.equals("login.do")) {
             // Allow these actions without logging in
             return Action.perform(action, request);
