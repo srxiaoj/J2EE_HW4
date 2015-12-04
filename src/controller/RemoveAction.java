@@ -61,7 +61,7 @@ public class RemoveAction extends Action {
     		FavoriteBean[] favoriteList = favoriteDAO.getUserFavorites(user.getUserId());
 	        request.setAttribute("favoriteList",favoriteList);
 
-	        return "manage.jsp";
+	        return "manage.do";
 		} catch (RollbackException e) {
     		errors.add(e.getMessage());
     		return "error.jsp";
