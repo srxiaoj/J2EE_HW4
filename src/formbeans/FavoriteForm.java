@@ -32,7 +32,12 @@ public class FavoriteForm extends FormBean {
         if (comment == null || comment.length() == 0) {
             errors.add("comment is required");
         }
+        if (errors.size() > 0) return errors;
 
+        if (url.matches(".*[<>\"].*")) errors.add("url may not contain angle brackets or quotes");
+        if (comment.matches(".*[<>\"].*")) errors.add("comment may not contain angle brackets or quotes");
+
+        if (!action.equals("Add Favorite")) errors.add("Invalid action");
         return errors;
     }
 }

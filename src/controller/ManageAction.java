@@ -68,15 +68,27 @@ public class ManageAction extends Action {
             FavoriteForm form = favoriteFormFactory.create(request);
             request.setAttribute("form", form);
             
-            String favoriteIdStr = request.getParameter("favoriteId");
-            if (favoriteIdStr != null) {
-                int favoriteId = Integer.parseInt(favoriteIdStr);
-                System.out.println("favoriteId is: " + favoriteId);
-                favoriteDAO.incrementClick(favoriteId);
-//                return "favorite.jsp"; // if return jsp page, the page will not refresh
-//                                       // and the favoriteId is shown on URL
-                return "manage.do";
-            }
+//            String favoriteIdStr = request.getParameter("favoriteId");
+//            if (favoriteIdStr != null) {
+//                int favoriteId = Integer.parseInt(favoriteIdStr);
+//                System.out.println("favoriteId is: " + favoriteId);
+//                favoriteDAO.incrementClick(favoriteId);
+////                return "favorite.jsp"; // if return jsp page, the page will not refresh
+////                                       // and the favoriteId is shown on URL
+//                return "manage.do";
+//            }
+            
+          String favoriteIdStr = request.getParameter("favoriteId");
+          String link = "";
+          if (favoriteIdStr != null) {
+              int favoriteId = Integer.parseInt(favoriteIdStr);
+              System.out.println("favoriteId is: " + favoriteId);
+              favoriteDAO.incrementClick(favoriteId);
+              link = favoriteDAO.read(favoriteId).getUrl();
+//              return "favorite.jsp"; // if return jsp page, the page will not refresh
+//                                     // and the favoriteId is shown on URL
+              return link;
+          }
             
             if (!form.isPresent()) {
                 return "manage.jsp";

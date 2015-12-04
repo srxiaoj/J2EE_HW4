@@ -22,7 +22,7 @@ import model.Model;
 import model.UserDAO;
 
 /*
- * Looks up the photos for a given "user".
+ * Looks up the favorite lists for a given "user".
  * 
  * If successful:
  *   (1) Sets the "userList" request attribute in order to display
@@ -57,6 +57,7 @@ public class ListAction extends Action {
 			UserForm form = formBeanFactory.create(request);
 	    	
 			String email = form.getEmail();
+			System.out.println("email is: " + email);
 			if (email == null || email.length() == 0) {
 				errors.add("User must be specified");
 				return "error.jsp";

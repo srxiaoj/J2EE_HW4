@@ -7,7 +7,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <p>
 	<table>
-	<c:forEach var="favoriteBean" items="${favoriteList }">
+	<c:forEach var="favoriteBean" items="${favoriteList}">
 		<tr>
 			<td></td>
 			<td><a href="?favoriteId=${favoriteBean.favoriteId}">
