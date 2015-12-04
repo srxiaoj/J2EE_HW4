@@ -26,6 +26,11 @@ public class LoginForm extends FormBean {
 			errors.add("Password is required");
 		}
 		
-		return errors;
+		return errors;/**
+		 * HW4.
+		 * @author Haorui WU
+		 * @andrewId haoruiw
+		 */
+
 	}
 }

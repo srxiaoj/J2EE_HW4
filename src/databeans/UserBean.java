@@ -1,3 +1,8 @@
+/**
+ * HW4.
+ * @author Haorui WU
+ * @andrewId haoruiw
+ */
 package databeans;
 
 import java.security.MessageDigest;

@@ -1,3 +1,8 @@
+/**
+ * HW4.
+ * @author Haorui WU
+ * @andrewId haoruiw
+ */
 package model;
 
 import org.genericdao.ConnectionPool;

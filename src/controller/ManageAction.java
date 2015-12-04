@@ -1,3 +1,8 @@
+/**
+ * HW4.
+ * @author Haorui WU
+ * @andrewId haoruiw
+ */
 package controller;
 
 import java.util.ArrayList;
@@ -48,11 +53,10 @@ public class ManageAction extends Action {
 	public String perform(HttpServletRequest request) {
 	    List<String> errors = new ArrayList<String>();
         HttpSession session = request.getSession();
+        request.setAttribute("errors",errors);
         UserBean user = (UserBean) session.getAttribute("user");
         String action = request.getParameter("action");
         
-        request.setAttribute("errors", errors);
-
         try {
             // Fetch the items now, so that in case there is no form or there
             // are errors
@@ -76,10 +80,6 @@ public class ManageAction extends Action {
             
             if (!form.isPresent()) {
                 return "manage.jsp";
-            }
-            if (action.equals("Log out")) {
-                session.setAttribute("user", null); //remove session also
-                return "login.do";
             }
             errors.addAll(form.getValidationErrors());
             if (errors.size() > 0) {

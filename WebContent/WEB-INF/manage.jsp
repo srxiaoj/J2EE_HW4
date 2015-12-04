@@ -1,10 +1,12 @@
+<%-- Haorui Wu
+	 andrewid: haoruiw --%>
 <%@page import="java.util.List"%>
 <%@page import="databeans.FavoriteBean"%>
 <%@page import="databeans.UserBean"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <jsp:include page="template-top.jsp" />
-
+<jsp:include page="error-list.jsp" />
 <form action="manage.do" method="POST">
 	<table>
 		<tr>
@@ -21,7 +23,7 @@
 		<tr>
 			<td></td>
 			<td><input type="submit" name="action" value="Add Favorite" /></td>
-			<td><input type="submit" name="action" value="Log out" /></td>
+			<td></td>
 		</tr>
 		<tr>
 			<td colspan="3"><hr /></td>

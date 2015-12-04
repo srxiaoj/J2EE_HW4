@@ -1,3 +1,8 @@
+/**
+ * HW4.
+ * @author Haorui WU
+ * @andrewId haoruiw
+ */
 package controller;
 
 
@@ -64,7 +69,7 @@ public class LoginAction extends Action {
 	        UserBean user = userDAO.read(form.getEmail());
 	        
 	        if (user == null) {
-	            errors.add("User Name not found");
+	            errors.add("Email not found");
 	            return "login.jsp";
 	        }
 

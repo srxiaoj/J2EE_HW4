@@ -22,7 +22,12 @@ public class RegisterForm extends FormBean {
 	public void setLastName(String s)  { lastName  = trimAndConvert(s,"<>\"");  }
 	public void setEmail(String s)  { email  = trimAndConvert(s,"<>\"");  }
 	public void setPassword(String s)  { password  = s.trim();                  }
-	public void setConfirm(String s)   { confirm   = s.trim();                  }
+	public void setConfirm(String s)   { confirm   = s.trim();                  }/**
+	 * HW4.
+	 * @author Haorui WU
+	 * @andrewId haoruiw
+	 */
+
 
 	public List<String> getValidationErrors() {
 		List<String> errors = new ArrayList<String>();
