@@ -53,6 +53,8 @@ public class LoginAction extends Action {
 	    	LoginForm form = formBeanFactory.create(request);
 	        request.setAttribute("form",form);
 
+	        //get userList even user is not log in
+	        request.setAttribute("userList",userDAO.getUsers());
 	        // If no params were passed, return with no errors so that the form will be
 	        // presented (we assume for the first time).
 	        if (!form.isPresent()) {
@@ -84,7 +86,7 @@ public class LoginAction extends Action {
 	        session.setAttribute("user",user);
 	        //set session for favorite list also to avoid nullpointerexception at manage.jsp
 	        FavoriteBean[] favoriteList = favoriteDAO.getUserFavorites(user.getUserId());
-            request.setAttribute("favoriteList",favoriteList);
+//            request.setAttribute("favoriteList",favoriteList);
 	        return "manage.do";
         } catch (RollbackException e) {
         	errors.add(e.getMessage());

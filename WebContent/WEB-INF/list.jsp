@@ -10,7 +10,7 @@
 	<c:forEach var="favoriteBean" items="${favoriteList}">
 		<tr>
 			<td></td>
-			<td><a href="?favoriteId=${favoriteBean.favoriteId}">
+			<td><a href="list.do?favoriteId=${favoriteBean.favoriteId}">
 					${favoriteBean.url} </a></td>
 		</tr>
 		<tr>

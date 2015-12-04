@@ -15,7 +15,7 @@ public class UserForm extends FormBean {
 	
 	public String getEmail()  { return email; }
 	
-	public void setUserName(String s)  { email = trimAndConvert(s,"<>>\"]"); }
+	public void setEmail(String s)  { email = trimAndConvert(s,"<>>\"]"); }
 
 	public List<String> getValidationErrors() {
 		List<String> errors = new ArrayList<String>();

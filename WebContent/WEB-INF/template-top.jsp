@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <html>
 <head>
 	<meta http-equiv="cache-control" content="no-cache">
@@ -21,19 +24,14 @@
         <td bgcolor="#99FF99">&nbsp;  </td>
         <td width="500" bgcolor="#99FF99">
             <p align="center">
-<%
-	if (request.getAttribute("title") == null) {
-%>
-		        <font size="7">Favorite List</font>
-<%
-    } else {
-%>
-		        <font size="5"><%=request.getAttribute("title")%></font>
-<%
-    }
-%>
-			</p>
-		</td>
+					<c:choose>
+						<c:when test="${ (empty title) }">
+							<font size="5">Favorite List</font>
+						</c:when>
+						<c:otherwise>
+							<font size="5">${title}</font>
+						</c:otherwise>
+					</c:choose></td>
     </tr>
 	
 	<!-- Spacer row -->
@@ -46,34 +44,31 @@
 		<td bgcolor="#99FF99" valign="top" height="500">
 			<!-- Navigation bar is one table cell down the left side -->
             <p align="left">
-<%
-    UserBean user = (UserBean) session.getAttribute("user");
-	if (user == null) {
-%>
-				<span class="menu-item"><a href="login.do">Login</a></span><br/>
-				<span class="menu-item"><a href="register.do">Register</a></span><br/>
-<%
-    } else {
-%>
-				<span class="menu-head"><%=user.getFirstName()%> <%=user.getLastName()%></span><br/>
-				<span class="menu-item"><a href="manage.do">Manage Your Favorite Websites</a></span><br/>
-				<span class="menu-item"><a href="change-pwd.do">Change Password</a></span><br/>
-				<span class="menu-item"><a href="logout.do">Logout</a></span><br/>
-				<span class="menu-item">&nbsp;</span><br/>
-				<span class="menu-head">Photos From:</span><br/>
-<%
-        for (UserBean u : (UserBean[])request.getAttribute("userList")) {
-%>
+
+	<c:choose>
+		<c:when test="${ (empty user) }">
+					<span class="menu-item"><a href="login.do">Login</a></span><br/>
+					<span class="menu-item"><a href="register.do">Register</a></span><br/>
+		</c:when>
+		<c:otherwise>
+					<span class="menu-head">${user.firstName} ${user.lastName}</span><br/>
+					<span class="menu-item"><a href="manage.do">Manage Your Websites</a></span><br/>
+					<span class="menu-item"><a href="change-pwd.do">Change Password</a></span><br/>
+					<span class="menu-item"><a href="logout.do">Logout</a></span><br/>
+		</c:otherwise>
+	</c:choose>
+					<span class="menu-item">&nbsp;</span><br/>
+					<span class="menu-head">Favorite lists for:</span><br/>
+	<c:choose>
+		<c:when test="${userList != null}">
+			<c:forEach var="u" items="${userList}">
 			    <span class="menu-item">
-					<a href="list.do?Email<%=u.getEmail()%>">
-						<%=u.getFirstName()%> <%=u.getLastName()%>
-					</a>
+					<a href="list.do?email=${u.email}">${u.firstName} ${u.lastName}</a>
 				</span>
 				<br/>
-<%
-		}
-    }
-%>
+			</c:forEach>
+		</c:when>
+	</c:choose>
 			</p>
 		</td>
 		

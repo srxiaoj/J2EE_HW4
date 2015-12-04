@@ -49,7 +49,8 @@ public class RegisterAction extends Action {
         try {
 	        RegisterForm form = formBeanFactory.create(request);
 	        request.setAttribute("form",form);
-	
+	      //get userList even user is not log in
+            request.setAttribute("userList",userDAO.getUsers());
 	        // If no params were passed, return with no errors so that the form will be
 	        // presented (we assume for the first time).
 	        if (!form.isPresent()) {

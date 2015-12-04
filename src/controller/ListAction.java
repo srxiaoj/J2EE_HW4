@@ -57,19 +57,18 @@ public class ListAction extends Action {
 			UserForm form = formBeanFactory.create(request);
 	    	
 			String email = form.getEmail();
-			System.out.println("email is: " + email);
+//			System.out.println("email is: " + email);
 			if (email == null || email.length() == 0) {
 				errors.add("User must be specified");
 				return "error.jsp";
 			}
 	
-	        // Set up photo list
+	        // Set up user list
         	UserBean user = userDAO.read(email);
         	if (user == null) {
     			errors.add("Invalid User: " + email);
     			return "error.jsp";
     		}
-
         	FavoriteBean[] favoriteList = favoriteDAO.getUserFavorites(user.getUserId());
 	        request.setAttribute("favoriteList",favoriteList);
 	        return "list.jsp";
