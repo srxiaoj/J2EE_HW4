@@ -30,7 +30,20 @@ public class UserDAO extends GenericDAO<UserBean> {
             return beans[0];
         }
     }
-    
+
+    public void create(UserBean user) throws RollbackException {
+        
+        try {
+            Transaction.begin();
+         // Create a new ItemBean in the database with the next id number
+//            create(user);
+            createAutoIncrement(user);
+            Transaction.commit();
+        } finally {
+            if (Transaction.isActive())
+                Transaction.rollback();
+        }
+    }
     public UserBean[] getUsers() throws RollbackException {
         UserBean[] users = match();
         Arrays.sort(users); // We want them sorted by last and first names (as per User.compareTo());

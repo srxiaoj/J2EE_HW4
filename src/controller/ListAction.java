@@ -55,14 +55,23 @@ public class ListAction extends Action {
 			request.setAttribute("userList",userDAO.getUsers());
 
 			UserForm form = formBeanFactory.create(request);
-	    	
+//	    	
 			String email = form.getEmail();
-//			System.out.println("email is: " + email);
-			if (email == null || email.length() == 0) {
-				errors.add("User must be specified");
-				return "error.jsp";
-			}
-	
+////			System.out.println("email is: " + email);
+//			if (email == null || email.length() == 0) {
+//				errors.add("User must be specified");
+//				return "error.jsp";
+//			}
+			String favoriteIdStr = request.getParameter("favoriteId");
+	          String link = "";
+	          if (favoriteIdStr != null) {
+	              int favoriteId = Integer.parseInt(favoriteIdStr);
+	              System.out.println("favoriteId is: " + favoriteId);
+	              favoriteDAO.incrementClick(favoriteId);
+	              link = favoriteDAO.read(favoriteId).getUrl();
+	              return link;
+	          }
+	          
 	        // Set up user list
         	UserBean user = userDAO.read(email);
         	if (user == null) {

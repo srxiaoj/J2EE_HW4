@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.genericdao.RollbackException;
+
 import databeans.UserBean;
 import model.Model;
 
@@ -21,15 +23,22 @@ import model.Model;
 public class Controller extends HttpServlet {
 
     public void init() throws ServletException {
-        Model model = new Model(getServletConfig());
+        Model model;
+        try {
+            model = new Model(getServletConfig());
+            Action.add(new ChangePwdAction(model));
+            Action.add(new ListAction(model));
+            Action.add(new LoginAction(model));
+            Action.add(new LogoutAction(model));
+            Action.add(new ManageAction(model));
+            Action.add(new RegisterAction(model));
+            Action.add(new RemoveAction(model));
+        } catch (RollbackException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
 
-        Action.add(new ChangePwdAction(model));
-        Action.add(new ListAction(model));
-        Action.add(new LoginAction(model));
-        Action.add(new LogoutAction(model));
-        Action.add(new ManageAction(model));
-        Action.add(new RegisterAction(model));
-        Action.add(new RemoveAction(model));
+        
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -103,11 +112,17 @@ public class Controller extends HttpServlet {
             return;
         }
         
-        if (nextPage.startsWith("http")) {
+        if (nextPage.startsWith("http") || nextPage.startsWith("HTTP")) {
             response.sendRedirect(nextPage);
             return;
         }
-
+        
+        if (!(nextPage.startsWith("http") && nextPage.startsWith("HTTP"))) {
+            StringBuilder a = new StringBuilder("http://");
+            a.append(nextPage);
+            response.sendRedirect(a.toString());
+            return;
+        }
         throw new ServletException(Controller.class.getName()
                 + ".sendToNextPage(\"" + nextPage + "\"): invalid extension.");
     }
