@@ -22,7 +22,7 @@ public class UserDAO extends GenericDAO<UserBean> {
     }
     
     public UserBean read(String email) throws RollbackException {
-        UserBean[] beans = match(MatchArg.containsIgnoreCase("email", email));
+        UserBean[] beans = match(MatchArg.equals("email", email));
         if (beans.length == 0) {
             return null;
         }

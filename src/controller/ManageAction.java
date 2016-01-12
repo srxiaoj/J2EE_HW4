@@ -82,7 +82,6 @@ public class ManageAction extends Action {
           String link = "";
           if (favoriteIdStr != null) {
               int favoriteId = Integer.parseInt(favoriteIdStr);
-              System.out.println("favoriteId is: " + favoriteId);
               favoriteDAO.incrementClick(favoriteId);
               link = favoriteDAO.read(favoriteId).getUrl();
               return link;

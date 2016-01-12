@@ -62,9 +62,17 @@ public class RegisterAction extends Action {
 	        if (errors.size() != 0) {
 	            return "register.jsp";
 	        }
+	        
+	        //check existed user
+	        UserBean user = userDAO.read(form.getEmail());
+            
+            if (user != null) {
+                errors.add("Email existed");
+                return "register.jsp";
+            }
 	
 	        // Create the user bean
-	        UserBean user = new UserBean();
+	        user = new UserBean();
 	        user.setEmail(form.getEmail());
 	        user.setFirstName(form.getFirstName());
 	        user.setLastName(form.getLastName());

@@ -21,7 +21,7 @@ public class UserForm extends FormBean {
 		List<String> errors = new ArrayList<String>();
 
 		if (email == null || email.length() == 0) {
-			errors.add("User Name is required");
+			errors.add("Wrong user!");
 		}
 		
 		return errors;

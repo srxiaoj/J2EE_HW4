@@ -93,7 +93,7 @@ public class Controller extends HttpServlet {
      */
     private void sendToNextPage(String nextPage, HttpServletRequest request,
             HttpServletResponse response) throws IOException, ServletException {
-        System.out.println("nextpage is: " + nextPage);
+//        System.out.println("nextpage is: " + nextPage);
         if (nextPage == null) {
             response.sendError(HttpServletResponse.SC_NOT_FOUND,
                     request.getServletPath());

@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<!doctype html>
 <html>
 <head>
 	<meta http-equiv="cache-control" content="no-cache">
@@ -71,8 +71,8 @@
 	</c:choose>
 			</p>
 		</td>
-		
 		<td>
 			<!-- Padding (blank space) between navbar and content -->
 		</td>
 		<td  valign="top">
+

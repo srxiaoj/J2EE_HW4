@@ -57,10 +57,10 @@ public class RegisterForm extends FormBean {
 			return errors;
 		}
 		
+		if (password.matches(".*[<>\"].*")) errors.add("password may not contain angle brackets or quotes");
 		if (!password.equals(confirm)) {
 			errors.add("Passwords are not the same");
 		}
-		
 		return errors;
 	}
 }

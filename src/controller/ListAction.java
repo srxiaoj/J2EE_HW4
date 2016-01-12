@@ -57,6 +57,7 @@ public class ListAction extends Action {
 			UserForm form = formBeanFactory.create(request);
 //	    	
 			String email = form.getEmail();
+//			System.out.println("email is: " + email);
 ////			System.out.println("email is: " + email);
 //			if (email == null || email.length() == 0) {
 //				errors.add("User must be specified");
@@ -66,7 +67,7 @@ public class ListAction extends Action {
 	          String link = "";
 	          if (favoriteIdStr != null) {
 	              int favoriteId = Integer.parseInt(favoriteIdStr);
-	              System.out.println("favoriteId is: " + favoriteId);
+//	              System.out.println("favoriteId is: " + favoriteId);
 	              favoriteDAO.incrementClick(favoriteId);
 	              link = favoriteDAO.read(favoriteId).getUrl();
 	              return link;
@@ -78,6 +79,7 @@ public class ListAction extends Action {
     			errors.add("Invalid User: " + email);
     			return "error.jsp";
     		}
+//        	System.out.println(user.getFirstName() + "'s user Id is:" + user.getUserId());
         	FavoriteBean[] favoriteList = favoriteDAO.getUserFavorites(user.getUserId());
 	        request.setAttribute("favoriteList",favoriteList);
 	        return "list.jsp";
